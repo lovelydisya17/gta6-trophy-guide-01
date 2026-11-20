@@ -3,23 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Ledger: GTA VI Trophy Guide and Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 GTA VI PlayStation 5 trophies: checklist, roadmap to the platinum, missables, and a cited guide for every trophy.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <h1>Leonida Ledger</h1>
+    <p class="subtitle">Every one of the 55 trophies, with its official name, description and grade, a tracker that remembers your progress, a roadmap to the platinum, and a guide for each trophy that names its sources.</p>
+    <p class="facts" id="facts">55 trophies: 1 platinum, 2 gold, 6 silver, 46 bronze. All offline, one playthrough, about 200 hours. Difficulty 4/10. Source: PowerPyx.</p>
+    <div class="progress-wrap" aria-label="Platinum progress">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <p class="progress-text" id="progressText">0 of 55 earned</p>
+    </div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+<nav class="tabs" aria-label="Guide sections">
+  <a href="#/" id="tab-tracker" class="tab">Tracker</a>
+  <a href="#/roadmap" id="tab-roadmap" class="tab">Roadmap to Platinum</a>
+  <a href="#/missables" id="tab-missables" class="tab">Missables</a>
+</nav>
+<main>
+  <section id="view-tracker" class="view">
+    <div class="toolbar" role="search">
+      <input id="search" type="search" placeholder="Search trophies by name or description" aria-label="Search trophies">
+      <label class="grade-label">Grade
+        <select id="grade" aria-label="Filter by grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="spoiler-label"><input id="spoiler" type="checkbox"> Hide story spoilers until earned</label>
+      <button id="export" type="button">Export progress</button>
+      <label class="import-label">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+      <button id="demo" type="button">Load demo progress (13 earned)</button>
+      <button id="reset" type="button">Reset progress</button>
+    </div>
+    <div class="kind-filters" id="kindFilters" role="group" aria-label="Filter by kind"></div>
+    <p class="count-line" id="countLine"></p>
+    <div class="tracker-grid">
+      <div class="list-col">
+        <ul class="trophy-list" id="trophyList"></ul>
+        <p class="empty" id="emptyNote" hidden>No trophies match these filters. Clear the search or pick another kind.</p>
+      </div>
+      <aside class="detail-col" id="detailPane" aria-live="polite">
+        <p class="detail-hint">Select a trophy to read its guide and sources.</p>
+      </aside>
+    </div>
+  </section>
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Roadmap to the platinum</h2>
+    <p class="lede">One playthrough, no online trophies, no mission replay, free-roam after the story. PowerPyx rates the run 4 out of 10 and about 200 hours. Cheats disable trophies and saving, so leave them off. Keep a manual save at the start and end of each chapter: there are 15 manual slots and no mission replay.</p>
+    <div id="roadmapSteps"></div>
+    <h3>The 100% completion checklist, in brief</h3>
+    <p>It unlocks after the story under Progress, Stats, 100% Completion, and progress made during the story already counts. It is closer to 60% of the game than true 100%: most side quests are not needed and collectibles are only partly required. What needs everything: robberies, underwater discoveries, shooting ranges, drone races and Bret's quests. The partial targets: any 100 optional missions, any 200 of 277 base-model vehicles scanned, any 100 of 255 animals studied, 300 stunts, 15 of 18 meditations, any 70 of 80 challenges. Source: PowerPyx.</p>
+  </section>
+  <section id="view-missables" class="view" hidden>
+    <h2>Missable trophies</h2>
+    <p class="lede">Only one trophy in the whole list is potentially missable. Everything else, story trophies included, can still be earned in free-roam after the story.</p>
+    <div id="missableList"></div>
+    <h3>Not missable: the rest of the list</h3>
+    <p>All 12 story chapter and mission trophies pop automatically and cannot be missed. Optional quest givers who go quiet for a while, such as Kenton, come back later in the story. Time-sensitive quests with an hourglass icon are not needed for any trophy. Some fences and magazine collectibles disappear, but neither affects trophies or 100% completion. Source: PowerPyx.</p>
+  </section>
+</main>
+<footer>
+  <h2>Sources and honesty notes</h2>
+  <p>Official names, descriptions and grades come from the PlayStation trophy list as published by Exophase and PSNProfiles, which agree on every entry. Roadmap facts, counts and methods come from PowerPyx's GTA 6 Trophy Guide and Roadmap, with Push Square and KeenGamer as second sources. Every trophy's guide in this app is written in this entry's own words and names the guide it draws on; no guide text is copied. Two trophies, Bad Luck, I Guess and The Truth Is Out There, were still unconfirmed in the published guides at launch, and their entries say so instead of guessing. This app works fully offline: it fetches only its own data file and makes no network request.</p>
+  <p class="credit">Leonida Ledger is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Rockstar Games. No Rockstar logo, artwork or game screenshot is used here.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
